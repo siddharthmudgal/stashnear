@@ -19,13 +19,13 @@ public class Controller_transactions {
             Long current_amount = customerPortfolio.get(deposit.getPortfolio_id());
             current_amount += deposit.getAmount();
             customerPortfolio.replace(deposit.getPortfolio_id(), current_amount);
+            return true;
 
         } else {
 
-            customerPortfolio.put(deposit.getPortfolio_id(), Enum_amounts.MINIMUM_AMOUNT.getValue());
+            return false;
 
         }
-        return true;
 
     }
 

@@ -29,8 +29,25 @@ class Controller_transactionsTest {
         pojo_customer.addPortfolio(pojo_portfolio);
 
         Pojo_deposit pojo_deposit = new Pojo_deposit("sample_transaction_id", pojo_portfolio.getUuid(), 100l);
-        Controller_transactions.process(pojo_customer,pojo_deposit);
+        boolean status = Controller_transactions.process(pojo_customer,pojo_deposit);
 
-        assert (pojo_customer.getPortfolios().get(pojo_portfolio.getUuid()).equals(100l));
+        assert (
+                pojo_customer.getPortfolios().get(pojo_portfolio.getUuid()).equals(100l) &&
+                status == true
+        );
+    }
+
+    @Test
+    void process_fail() {
+        Pojo_portfolio pojo_portfolio = new Pojo_portfolio("sample_portfolio_id", "high_risk", 8);
+        pojo_customer.addPortfolio(pojo_portfolio);
+
+        Pojo_deposit pojo_deposit = new Pojo_deposit(
+                "sample_transaction_id", "incorrect_portfolio_id", 100l);
+
+        boolean status = Controller_transactions.process(pojo_customer,pojo_deposit);
+
+        assert (!pojo_customer.getPortfolios().containsKey(pojo_deposit.getPortfolio_id()) &&
+                status == false);
     }
 }
