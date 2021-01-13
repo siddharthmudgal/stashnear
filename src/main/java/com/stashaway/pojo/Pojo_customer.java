@@ -5,22 +5,29 @@ import com.stashaway.enums.Enum_amounts;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Pojo representing the details of a customer
+ */
 public class Pojo_customer {
 
     private String reference_code;
-    private Map<Pojo_portfolio, Long> portfolios;
+    private Map<String, Long> portfolios;
+
+    public Pojo_customer(String reference_code) {
+        this.reference_code = reference_code;
+    }
 
     public String getReference_code() {
         return reference_code;
     }
 
-    public Map<Pojo_portfolio, Long> getPortfolios() {
+    public Map<String, Long> getPortfolios() {
         return portfolios;
     }
 
     public void addPortfolio(Pojo_portfolio pojo_portfolio) {
         if (portfolios == null)
             portfolios = new HashMap<>();
-        portfolios.put(pojo_portfolio, Enum_amounts.MINIMUM_AMOUNT.getValue());
+        portfolios.put(pojo_portfolio.getUuid(), Enum_amounts.MINIMUM_AMOUNT.getValue());
     }
 }

@@ -1,5 +1,8 @@
 package com.stashaway.pojo;
 
+/**
+ * Pojo to hold details of a portfolio
+ */
 public class Pojo_portfolio {
 
     private String uuid;
