@@ -93,6 +93,8 @@ class Controller_deposit_planTest {
 
         }
 
+        Controller_customer_reference_resolver.dump_entire_customer_db();
+
 
     }
 }

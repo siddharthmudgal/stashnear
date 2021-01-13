@@ -47,4 +47,17 @@ public class Controller_customer_reference_resolver {
 
     }
 
+    public static void dump_entire_customer_db() {
+        for (Map.Entry<String, Pojo_customer> entry : all_customer_data.entrySet()) {
+            System.out.println("*********************************************");
+            System.out.println("Customer reference -> " + entry.getKey());
+            Map<String, Long> portfolio_details = entry.getValue().getPortfolios();
+            for (Map.Entry<String, Long> entry_portfolio : portfolio_details.entrySet()) {
+                System.out.println("Portfolio ID -> " + entry_portfolio.getKey());
+                System.out.println("Portfolio Value -> " + entry_portfolio.getValue());
+
+            }
+        }
+    }
+
 }

@@ -10,6 +10,11 @@ public class Pojo_deposit_plan {
     private String uuid;
     private String customer_reference_id;
     private String type;
+
+    /**
+     * String -> id of the portfolio
+     * Long -> amount to be processed
+     */
     private Map<String, Long> deposits;
 
     public Pojo_deposit_plan(String uuid, String customer_reference_id, String type, Map<String, Long> deposits) {

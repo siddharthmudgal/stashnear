@@ -11,6 +11,10 @@ import java.util.Map;
 public class Pojo_customer {
 
     private String reference_code;
+    /**
+     * String -> portfolio id
+     * Long -> amount in the portfolio
+     */
     private Map<String, Long> portfolios;
 
     public Pojo_customer(String reference_code) {
