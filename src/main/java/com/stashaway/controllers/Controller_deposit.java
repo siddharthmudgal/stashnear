@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Controller to manage modular transactions
  */
-public class Controller_transactions {
+public class Controller_deposit {
 
     public static boolean process(Pojo_customer customer, Pojo_deposit deposit) {
 

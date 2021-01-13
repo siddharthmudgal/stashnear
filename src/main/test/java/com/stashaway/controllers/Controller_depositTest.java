@@ -7,9 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class Controller_transactionsTest {
+class Controller_depositTest {
 
     Pojo_customer pojo_customer;
 
@@ -30,7 +28,7 @@ class Controller_transactionsTest {
 
         Pojo_deposit pojo_deposit = new Pojo_deposit("sample_transaction_id", pojo_portfolio.getUuid(), 100l,
                 "sample_reference_id");
-        boolean status = Controller_transactions.process(pojo_customer,pojo_deposit);
+        boolean status = Controller_deposit.process(pojo_customer,pojo_deposit);
 
         assert (
                 pojo_customer.getPortfolios().get(pojo_portfolio.getUuid()).equals(100l) &&
@@ -47,7 +45,7 @@ class Controller_transactionsTest {
                 "sample_transaction_id", "incorrect_portfolio_id", 100l,
                 "sample_reference_id");
 
-        boolean status = Controller_transactions.process(pojo_customer,pojo_deposit);
+        boolean status = Controller_deposit.process(pojo_customer,pojo_deposit);
 
         assert (!pojo_customer.getPortfolios().containsKey(pojo_deposit.getPortfolio_id()) &&
                 status == false);
