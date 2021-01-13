@@ -1,15 +1,16 @@
 package com.stashaway.controllers;
 
 import com.stashaway.pojo.Pojo_customer;
+import com.stashaway.pojo.Pojo_portfolio;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Dummy class to simulate a database of customers. This class uses a HashMap to store all customers,
- * ideally this should be pulled from a database. Current logics only add new customers as new reference
- * id's come. However, in a real case scenario this refernce id would be validated against a
- * customer database
+ * ideally this should be pulled from a database.
  */
 public class Controller_customer_reference_resolver {
 
@@ -21,9 +22,28 @@ public class Controller_customer_reference_resolver {
             return all_customer_data.get(reference_id);
         }
 
-        Pojo_customer customer = new Pojo_customer(reference_id);
-        all_customer_data.put(reference_id, customer);
-        return customer;
+        return null;
+
+    }
+
+    public static boolean add_customer(String reference_id, List<Pojo_portfolio> portfolios) {
+
+        Pojo_customer customer;
+
+        if (all_customer_data.containsKey(reference_id)) {
+            customer = all_customer_data.get(reference_id);
+        } else {
+            customer = new Pojo_customer(reference_id);
+            all_customer_data.put(reference_id,customer);
+        }
+
+        Iterator<Pojo_portfolio> portfolioIterator = portfolios.listIterator();
+        while (portfolioIterator.hasNext()) {
+            customer.addPortfolio(portfolioIterator.next());
+        }
+
+        all_customer_data.replace(reference_id, customer);
+        return true;
 
     }
 
