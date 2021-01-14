@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Generates a set of deposit commands to be executed
+ */
 public class Controller_deposit_command_generator {
 
     public static List<Pojo_deposit> process(Pojo_deposit_plan pojo_deposit_plan) {

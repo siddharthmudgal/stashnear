@@ -13,7 +13,13 @@ public class Controller_deposit {
 
     public static boolean process(Pojo_customer customer, Pojo_deposit deposit) {
 
+        if (deposit.getAmount() <= 0)
+            return false;
+
         Map<String, Long> customerPortfolio = customer.getPortfolios();
+        /**
+         * Validating presence of portfolio in customer profile and executing the order if the same exists
+         */
         if (customerPortfolio.containsKey(deposit.getPortfolio_id())) {
 
             Long current_amount = customerPortfolio.get(deposit.getPortfolio_id());

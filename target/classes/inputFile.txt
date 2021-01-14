@@ -1,0 +1,8 @@
+One time (High risk: $10,000, Retirement: $500)
+Monthly (High risk: $0, Retirement: $100)
+One time (High risk two: $10,000, Retirement: $500)
+Monthly (High risk: $0, Retirement: $100)
+One time (High risk: $10,000, Retirement: $500)
+Monthly (High risk: $0, Retirement: $100)
+One time (High risk: $10,000, Retirement two: $500)
+Monthly (High risk: $0, Retirement: $100)

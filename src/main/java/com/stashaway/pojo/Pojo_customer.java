@@ -19,6 +19,7 @@ public class Pojo_customer {
 
     public Pojo_customer(String reference_code) {
         this.reference_code = reference_code;
+        portfolios = new HashMap<>();
     }
 
     public String getReference_code() {
@@ -32,6 +33,10 @@ public class Pojo_customer {
     public void addPortfolio(Pojo_portfolio pojo_portfolio) {
         if (portfolios == null)
             portfolios = new HashMap<>();
+
+        if ( portfolios.containsKey(pojo_portfolio.getUuid()))
+            return;
+
         portfolios.put(pojo_portfolio.getUuid(), Enum_amounts.MINIMUM_AMOUNT.getValue());
     }
 }
